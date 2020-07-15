@@ -15,7 +15,7 @@ class qiwiXML {
     $this->_url = 'https://api.qiwi.com/xml/topup.jsp';
   }
 
-  private function sendData (array $content, bool $post = false) {
+  private function sendData (string $content, bool $post = false) {
     $ch = curl_init($this->_url);
       curl_setopt($ch, CURLOPT_POST, $post);
       curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: text/xml'));
@@ -105,8 +105,6 @@ class qiwiXML {
       <phonenumber>' . $phoneNum . '</phonenumber>
       <extra name="password">' . $this->_password . '</extra>
       </request>';
-      $this->_transactionID = $timeID;
-
       return $this->sendData($data, true);
   }
 
@@ -168,8 +166,6 @@ class qiwiXML {
         </payment>
       </status>
     </request>';
-    $this->_transactionID = $timeID;
-
     return $this->sendData($data, true);
   }
 
