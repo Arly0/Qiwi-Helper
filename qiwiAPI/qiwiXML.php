@@ -6,12 +6,14 @@ class qiwiXML {
   private $_password;
   private $_url;
   private $_autoResponce;
+  private $_time_out;
   public  $_transactionID;
 
-  public function __construct ($user_id, $pass, bool $resp = false) {
+  public function __construct ($user_id, $pass, bool $resp = false, $time_out = false) {
     $this->_user_id = $user_id;
     $this->_password = $pass;
     $this->_autoResponce = $resp;
+    $this->_time_out = $time_out;
     $this->_url = 'https://api.qiwi.com/xml/topup.jsp';
   }
 
